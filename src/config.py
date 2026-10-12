@@ -41,3 +41,4 @@ TRAIN_IMGSZ = 640
 
 # Reproducibility
 SEED = 42
+YOLO_DIR = ROOT / "data" / "yolo"
