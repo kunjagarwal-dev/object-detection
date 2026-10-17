@@ -15,5 +15,19 @@ def smoke_train():
 
     return result
 
+def train_baseline():
+    model = YOLO("yolov8n.pt")
+    result = model.train(data= str(ROOT / "configs" / "data.yaml"),
+                            epochs=60,
+                            patience=15,
+                            imgsz=640,
+                            batch=16,
+                            workers = 2,
+                            device=0,
+                            name="baseline_v8n_640",
+                            project=str(ROOT / "runs" / "train"))
+
+    return result
+
 if __name__ == "__main__":
-    smoke_train()
+    train_baseline()
