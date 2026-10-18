@@ -29,5 +29,19 @@ def train_baseline():
 
     return result
 
+def train_yolov11():
+    model = YOLO("yolo11n.pt")
+    result = model.train(data= str(ROOT / "configs" / "data.yaml"),
+                            epochs=60,
+                            patience=15,
+                            imgsz=640,
+                            batch=16,
+                            workers = 2,
+                            device=0,
+                            name="v11_640",
+                            project=str(ROOT / "runs" / "train"))
+
+    return result
+
 if __name__ == "__main__":
-    train_baseline()
+    train_yolov11()
