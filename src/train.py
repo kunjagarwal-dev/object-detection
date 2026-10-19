@@ -43,5 +43,21 @@ def train_yolov11():
 
     return result
 
+def train_yolov11_960():
+    model = YOLO("yolo11n.pt")
+    result = model.train(
+        data= str(ROOT / "configs" / "data.yaml"),
+        epochs=60,
+        patience=10,
+        imgsz=960,
+        batch=8,
+        workers = 2,
+        device=0,
+        name="v11_960",
+        project=str(ROOT / "runs" / "train")
+    )
+
+    return result
+
 if __name__ == "__main__":
-    train_yolov11()
+    train_yolov11_960()
