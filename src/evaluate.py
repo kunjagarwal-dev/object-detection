@@ -25,5 +25,19 @@ def validate_640_at_640():
         project=str(ROOT / "runs" / "val")
     )
 
+def test_960():
+    model = YOLO(str(ROOT / "models" / "final_yolo11n_960.pt"))
+    result = model.val(
+        data= str(ROOT / "configs" / "data.yaml"),
+        split="test",
+        imgsz=960,
+        batch=8,
+        workers = 2,
+        device=0,
+        name="final_test_960",
+        project=str(ROOT / "runs" / "test")
+    )
+    return result
+
 if __name__ == "__main__":
-    validate_640_at_640()
+    test_960()
